@@ -77,6 +77,84 @@ mean(dat[2,])
 class(as.integer(dat[2,]))
 mean(as.integer(dat[2,]))
 
+##helpful: alt- makes <-
+<- 
 
+##writing functions
+Fahrenheit_to_kelvin <- function(temp_F) {
+  temp_K <- ((temp_F-32)*(5/9))+273.15
+  return (temp_K)
+}
 
+Fahrenheit_to_kelvin(100)
 
+kelvin_to_celsius <- function(temp_K) {
+  temp_C <- temp_K - 273.15
+  return (temp_C)
+}
+
+kelvin_to_celsius(300)
+
+fahrenheit_to_celsius <-  function(temp_F) {
+  temp_K <- Fahrenheit_to_kelvin(temp_F)
+  temp_C <- kelvin_to_celsius(temp_K)
+  return (temp_C)
+}
+
+fahrenheit_to_celsius(100)
+
+sentence <- c("write", "programs", "for", "people", "not", "computers")
+
+asterisk <- "***"
+
+fence <-  function (sentence, wrapper) {
+  answer <-  c(wrapper, sentence, wrapper)
+  return(answer)
+}
+
+fence(sentence, asterisk)
+
+center <- function(data, desired) {
+  new_data <- (data - mean(data)+desired)
+  return(new_data)
+}
+
+##test the center function
+z <-  c(0,0,0,0)
+
+center(z, 3)
+
+centered <- center(dat [,4], 0)
+
+min(dat[,4])
+min(centered)
+max(dat,4)
+max(centered)
+mean(dat[,4])
+mean(centered)
+
+sd(dat[,4])
+sd(centered)
+
+all.equal(sd(dat[,4]), sd(centered))
+
+center <- function(data, desired=0) {
+  new_data <- (data - mean(data)+desired)
+  return(new_data)
+}
+
+center(dat[,4])
+
+##write function that scales numbers in a vector from 0-1
+##this needs the min and the max
+
+x <- c(6,8,9,1,13,5)
+
+rescale <- function (data) {
+ rescaleddata <- ((data-min(data))/max(data))
+ return(rescaleddata)
+}
+
+rescale(data = dat[,4])
+
+rescale(x)  
