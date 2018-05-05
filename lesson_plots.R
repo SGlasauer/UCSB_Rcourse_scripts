@@ -228,8 +228,6 @@ ggplot(mammals, aes(x = adult_head_body_len_mm, y = adult_body_mass_g)) +
 # facet_wrap(~order)
 
 
-+
-  theme_minimal()
 
 install.packages('stringi')
 library(stringi)
@@ -250,3 +248,29 @@ ggsave("testplot.pdf")
 ggsave("testplot.jpg")
 ggsave("testplot.tiff")
 ##here you can also add more arguments such as setting the size of the plot
+
+##for highly complicated graphs like mapping, base plots are better than ggplot
+
+mammals %>%
+  #group by order
+  group_by(order) %>%
+  #find the mean mass and mean length for each order
+  mutate(mean_mass = mean(adult_body_mass_g, na.rm = TRUE),
+            mean_len = mean(adult_head_body_len_mm, na.rm = TRUE)) %>%
+  glimpse()
+#mutate switches rows and columns
+
+mammals_mutate$norm_mass <- mammals_mutate$adult_body_mass_g /
+  mammals_mutate$mean_mass
+mammals_mutate$norm_mass
+
+## I don't know how object mammals_mutate is made
+
+mammals_mutate %>%
+  arrange(desc(norm_mass)) %>%
+  glimpse()
+
+  
+
+
+
