@@ -158,3 +158,72 @@ rescale <- function (data) {
 rescale(data = dat[,4])
 
 rescale(x)  
+
+##for loops
+
+analyze <- function(filename) {
+  #import this data
+  dat <- read.csv(file = filename, header=FALSE)
+  #plot the average, min, and max inflammation over time
+  avg_day_inflammation <- apply(dat, 2, mean)
+  plot(avg_day_inflammation)
+  
+  max_day_inflammation <- apply(dat, 2, max)
+  plot(max_day_inflammation)
+  
+  min_day_inflammation <- apply(dat, 2, min)
+  plot(min_day_inflammation)
+}
+
+analyze("inflammation-01.csv")
+
+best_practice <-  c("let", "the", "computer", "do", "the")
+
+print_words <-  function (sentence) {
+  print(sentence[1])
+  print(sentence[2])
+  print(sentence[3])
+}
+
+print_words <- function (sentence) {
+  for (word in sentence) {
+    print(word)
+  }
+}
+
+print_words(best_practice)
+
+len <- 0
+vowels <- (c("a", "e", "i", "o", "u"))
+
+for (v in vowels) {
+  len <- len +1
+}
+
+len
+v
+
+letter <- "z"
+for(letter in c("a", "b", "c")) {
+  print (letter)
+}
+
+letter
+
+length(vowels)
+
+## R has a function called seq that creates
+#a list of numbers:
+seq(3)
+seq(10)
+
+## make a function that prints
+#the first N numbers
+
+print_N <-  function (n) {
+  for(i in 1:n) {
+    print(i)
+  }
+}
+
+
